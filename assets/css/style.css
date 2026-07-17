@@ -59,33 +59,30 @@ body {
     direction: rtl;
 }
 
-/* Layout Latin yang Rapi & Rapat */
+/* Khusus untuk Latin */
 .lugot-gloss.is-latin {
-    transform: none !important;
-    position: static !important;    /* Biar tidak melayang/tabrakan */
-    display: block !important;       /* Biar lugot ada di bawah kata arab */
-    color: #991b1b !important;       /* Warna teks lugot */
-    font-size: 0.75rem !important;   /* Ukuran kecil agar tidak memenuhi layar */
-    line-height: 1 !important;
-    margin-top: 2px !important;      /* Jarak tipis ke arab */
-    white-space: nowrap;             /* Mencegah teks lugot patah di tengah */
+    transform: none !important; /* Menghilangkan kemiringan */
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-top: 10px !important; /* Jarak aman dari matan Arab */
+    
+    /* KUNCI: Ubah posisi agar tidak melayang dan menabrak kata lain */
+    position: relative !important; 
+    top: auto !important;
+    
+    /* Memaksa teks turun ke baris baru ke bawah */
+    display: block !important; 
+    white-space: normal !important; 
+    text-align: center;
+    line-height: 1.3 !important;
 }
 
-/* Biar matan tidak renggang antar baris */
-.lugot-container {
-    display: inline-flex !important;
-    flex-direction: column;          /* Menyusun arab di atas, latin di bawah */
-    align-items: center;             /* Biar rata tengah */
-    margin: 0 4px 8px 4px !important; /* Jarak antar kata (horizontal) & antar baris (vertikal) */
-    vertical-align: top;
-}
-
-/* Memastikan container kitab rapi */
-#kitabContentContainer {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: start !important; /* Rata kanan/kiri sesuai kebutuhan */
-    line-height: 2.5 !important;      /* Mengatur jarak antar baris matan agar tidak terlalu renggang */
+/* Mengembalikan spasi antar kata yang hilang di mode Latin */
+.lugot-gloss.is-latin span {
+    white-space: normal !important;
+    margin-right: 4px; /* Menambahkan spasi */
+    display: inline-block; /* Mencegah kata terpotong di tengah huruf */
 }
 /* Themes */
 .theme-yellow { background-color: #FAF5EB; color: #2D241E; }
