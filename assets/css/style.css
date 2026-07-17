@@ -59,38 +59,33 @@ body {
     direction: rtl;
 }
 
-/* Reset total untuk lugot agar tidak tumpang tindih */
+/* Layout Latin yang Rapi & Rapat */
+.lugot-gloss.is-latin {
+    transform: none !important;
+    position: static !important;    /* Biar tidak melayang/tabrakan */
+    display: block !important;       /* Biar lugot ada di bawah kata arab */
+    color: #991b1b !important;       /* Warna teks lugot */
+    font-size: 0.75rem !important;   /* Ukuran kecil agar tidak memenuhi layar */
+    line-height: 1 !important;
+    margin-top: 2px !important;      /* Jarak tipis ke arab */
+    white-space: nowrap;             /* Mencegah teks lugot patah di tengah */
+}
+
+/* Biar matan tidak renggang antar baris */
 .lugot-container {
-    display: inline-block !important;
-    position: relative !important;
-    margin-right: 15px !important; /* Spasi antar kata */
-    margin-bottom: 20px !important; /* Spasi antar baris */
-    text-align: center;
+    display: inline-flex !important;
+    flex-direction: column;          /* Menyusun arab di atas, latin di bawah */
+    align-items: center;             /* Biar rata tengah */
+    margin: 0 4px 8px 4px !important; /* Jarak antar kata (horizontal) & antar baris (vertikal) */
+    vertical-align: top;
 }
 
-/* Matan Arab */
-.lugot-word {
-    display: block !important;
-    font-size: 24px !important; /* Matan lebih besar */
-}
-
-/* Lugot (Pegon/Latin) */
-.lugot-gloss {
-    position: absolute !important;
-    top: 100% !important; /* Selalu tepat di bawah kata */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    
-    font-size: 10px !important; /* Ukuran lugot kecil */
-    white-space: nowrap !important;
-    color: #991b1b !important;
-    margin-top: 2px !important;
-}
-
-/* Khusus jika mode Latin aktif */
-.is-latin {
-    transform: translateX(-50%) !important; /* Hapus rotasi miring */
-    text-align: center;
+/* Memastikan container kitab rapi */
+#kitabContentContainer {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: start !important; /* Rata kanan/kiri sesuai kebutuhan */
+    line-height: 2.5 !important;      /* Mengatur jarak antar baris matan agar tidak terlalu renggang */
 }
 /* Themes */
 .theme-yellow { background-color: #FAF5EB; color: #2D241E; }
