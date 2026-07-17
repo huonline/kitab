@@ -383,6 +383,224 @@ const kitabData = [
                 irob: "Jar-Majrur",
                 wordType: "Harf + Dhamir",
                 explanation: "Jar majrur."
+            },
+            {
+        withHarokat: "سَمَّيْتُهُ",
+        withoutHarokat: "سميته",
+        pegon: "توس عارانان كولا كايي كتاب",
+        latin: "tos ngaranan kaula ka ieu kitab",
+        irob: "Fi'il + Fa'il + Maf'ul Bih",
+        wordType: "Fi'liyah",
+        explanation: "Fi'il madhi, dhamir mutakallim (fa'il), dan dhamir ghaib (maf'ul bih)."
+    },
+    {
+        withHarokat: "الرِّيَاضَ",
+        withoutHarokat: "الرياض",
+        pegon: "كاريياض",
+        latin: "ka riyadh",
+        irob: "Maf'ul Tsani",
+        wordType: "Isim",
+        explanation: "Maf'ul bih kedua dari fi'il sammaytu, manshub dengan fathah."
+    },
+    {
+        withHarokat: "الْبَدِيعَةَ",
+        withoutHarokat: "البديعة",
+        pegon: "انو عداه",
+        latin: "anu endah",
+        irob: "Na'at",
+        wordType: "Isim",
+        explanation: "Sifat (na'at) dari Ar-Riyadh, mengikuti i'rob nashab."
+    },
+    {
+        withHarokat: "فِي",
+        withoutHarokat: "في",
+        pegon: "دينا",
+        latin: "dina",
+        irob: "Huruf Jar",
+        wordType: "Harf",
+        explanation: "Huruf jar."
+    },
+    {
+        withHarokat: "أُصُولِ",
+        withoutHarokat: "أصول",
+        pegon: "فوقو٢",
+        latin: "poko-poko",
+        irob: "Majrur",
+        wordType: "Isim",
+        explanation: "Majrur karena huruf jar."
+    },
+    {
+        withHarokat: "الدِّينِ",
+        withoutHarokat: "الدين",
+        pegon: "اكام",
+        latin: "agama",
+        irob: "Mudhaf Ilaih",
+        wordType: "Isim",
+        explanation: "Mudhaf ilaih majrur dengan kasrah."
+    },
+    {
+        withHarokat: "وَبَعْضِ",
+        withoutHarokat: "وبعض",
+        pegon: "ساريع ساواريه",
+        latin: "jeung sawareh",
+        irob: "Ma'thuf",
+        wordType: "Isim",
+        explanation: "Ma'thuf (diikutkan) kepada lafazh Ushuli, sehingga ikut majrur."
+    },
+    {
+        withHarokat: "فُرُوعِ",
+        withoutHarokat: "فروع",
+        pegon: "جاباع٢",
+        latin: "cabang-cabang",
+        irob: "Mudhaf Ilaih",
+        wordType: "Isim",
+        explanation: "Mudhaf ilaih dari ba'dhi."
+    },
+    {
+        withHarokat: "الشَّرِيعَةِ",
+        withoutHarokat: "الشريعة",
+        pegon: "شريعة",
+        latin: "syari'at",
+        irob: "Mudhaf Ilaih",
+        wordType: "Isim",
+        explanation: "Mudhaf ilaih majrur."
+    },
+    {
+        withHarokat: "رَاجِيًا",
+        withoutHarokat: "راجيا",
+        pegon: "حالنا عاريف٢",
+        latin: "halna ngarep-ngarep",
+        irob: "Hal",
+        wordType: "Isim",
+        explanation: "Hal (menjelaskan keadaan fa'il saat menamai kitab), manshub dengan fathah."
+    },
+    {
+        withHarokat: "مِنَ",
+        withoutHarokat: "من",
+        pegon: "تي",
+        latin: "ti",
+        irob: "Huruf Jar",
+        wordType: "Harf",
+        explanation: "Huruf jar."
+    },
+    {
+        withHarokat: "اللَّهِ",
+        withoutHarokat: "الله",
+        pegon: "الله",
+        latin: "Gusti Allah",
+        irob: "Majrur",
+        wordType: "Isim Alam",
+        explanation: "Lafdzul jalalah majrur karena huruf jar."
+    },
+    {
+        withHarokat: "أَنْ",
+        withoutHarokat: "أن",
+        pegon: "كان موكي",
+        latin: "kana mugi",
+        irob: "Harf Mashdariyah",
+        wordType: "Harf",
+        explanation: "Huruf mashdariyah dan amil nawashib."
+    },
+    {
+        withHarokat: "يَنْفَعَ",
+        withoutHarokat: "ينفع",
+        pegon: "عامنفعتكن",
+        latin: "ngamanfaatkeun",
+        irob: "Fi'il Mudhari' Manshub",
+        wordType: "Fi'il",
+        explanation: "Manshub dengan fathah karena didahului 'An'."
+    },
+    {
+        withHarokat: "بِهِ",
+        withoutHarokat: "به",
+        pegon: "كالوان ايي كتاب",
+        latin: "kalawan ieu kitab",
+        irob: "Jar-Majrur",
+        wordType: "Harf + Dhamir",
+        explanation: "Jar dan majrur muta'alliq dengan lafazh yanfa'a."
+    },
+    {
+        withHarokat: "طَلَبَةَ",
+        withoutHarokat: "طلبة",
+        pegon: "كامسنتري٢",
+        latin: "ka santri-santri",
+        irob: "Maf'ul Bih",
+        wordType: "Isim",
+        explanation: "Objek penderita (maf'ul bih) dari yanfa'a, manshub."
+    },
+    {
+        withHarokat: "الْعِلْمِ",
+        withoutHarokat: "العلم",
+        pegon: "علم",
+        latin: "elmu",
+        irob: "Mudhaf Ilaih",
+        wordType: "Isim",
+        explanation: "Mudhaf ilaih majrur dengan kasrah."
+    },
+    {
+        withHarokat: "لَا سِيَّمَا",
+        withoutHarokat: "لا سيما",
+        pegon: "سومووونا",
+        latin: "sumawona",
+        irob: "Tarkib Istitsna / Takhshish",
+        wordType: "Harf + Isim",
+        explanation: "Digunakan untuk mengkhususkan sesuatu (terlebih lagi / khususnya)."
+    },
+    {
+        withHarokat: "الْمُبْتَدِئِينَ",
+        withoutHarokat: "المبتدئين",
+        pegon: "كا جلما٢ انو ميميتي",
+        latin: "ka jalma-jalma anu mimiti",
+        irob: "Majrur / Mudhaf Ilaih",
+        wordType: "Isim Jama'",
+        explanation: "Majrur dengan ya karena jamak mudzakkar salim."
+    },
+    {
+        withHarokat: "وَأَنْ",
+        withoutHarokat: "وأن",
+        pegon: "ساريع موكي",
+        latin: "sareng mugi",
+        irob: "Ma'thuf + Mashdariyah",
+        wordType: "Harf",
+        explanation: "Wawu athof dan An mashdariyah."
+    },
+    {
+        withHarokat: "يُوَجِّهَ",
+        withoutHarokat: "يوجه",
+        pegon: "عاهادفكن",
+        latin: "ngahareupkeun",
+        irob: "Fi'il Mudhari' Manshub",
+        wordType: "Fi'il",
+        explanation: "Fi'il mudhari' manshub karena 'An'."
+    },
+    {
+        withHarokat: "إِلَيْهِ",
+        withoutHarokat: "إليه",
+        pegon: "كايي كتاب",
+        latin: "ka ieu kitab",
+        irob: "Jar-Majrur",
+        wordType: "Harf + Dhamir",
+        explanation: "Muta'alliq dengan yuwajjiha."
+    },
+    {
+        withHarokat: "رَغْبَةَ",
+        withoutHarokat: "رغبة",
+        pegon: "كاهاياع",
+        latin: "kahayang",
+        irob: "Maf'ul Bih",
+        wordType: "Isim",
+        explanation: "Maf'ul bih dari yuwajjiha."
+    },
+    {
+        withHarokat: "الرَّاغِبِينَ",
+        withoutHarokat: "الراغبين",
+        pegon: "كانو ميكاهويوع",
+        latin: "ka nu mikahoyong",
+        irob: "Mudhaf Ilaih",
+        wordType: "Isim Jama'",
+        explanation: "Mudhaf ilaih majrur dengan ya."
+    }
+]
             }
         ]
     }
