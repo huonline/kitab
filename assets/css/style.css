@@ -61,9 +61,11 @@ body {
 
 /* Khusus untuk Latin */
 .lugot-gloss.is-latin {
-    transform: rotate(-10deg);
-    transform-origin: top center;
+    transform: none; /* Menghilangkan kemiringan agar teks lurus */
     direction: ltr;
+    font-family: 'Inter', sans-serif; /* Menggunakan font sistem modern agar lebih mudah dieja */
+    font-weight: 600;
+    margin-top: 6px; /* Memberikan sedikit jarak napas dari teks Arab di atasnya */
 }
 
 /* Themes */
