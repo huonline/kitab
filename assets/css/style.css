@@ -80,3 +80,9 @@ body {
 .theme-dark .paper-card { background-color: #1F2937; border-color: #374151; }
 .theme-dark .lugot-gloss { color: #E57373; }
 .theme-dark .lugot-word:hover { background-color: rgba(229, 115, 115, 0.15); color: #E57373; }
+
+@media (max-width: 640px) {
+    .lugot-container {
+        margin: 0.1rem 0.2rem 1.2rem 0.2rem; /* Lebih rapat lagi di HP */
+    }
+}
