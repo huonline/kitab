@@ -86,3 +86,21 @@ body {
         margin: 0.1rem 0.2rem 1.2rem 0.2rem; /* Lebih rapat lagi di HP */
     }
 }
+
+/* Memaksa teks dalam modal agar selalu terbaca */
+#guideModal .opacity-75, 
+#guideModal .opacity-80, 
+#guideModal p, 
+#guideModal span {
+    color: #e5e7eb !important; /* Warna abu-abu terang */
+    opacity: 1 !important;
+}
+
+/* Memperjelas latar belakang kartu di dalam modal */
+#guideModal .bg-yellow-50 {
+    background-color: #374151 !important; /* Warna abu gelap agar teks putih kontras */
+}
+
+#guideModal .font-bold {
+    color: #ffffff !important; /* Judul dibuat putih bersih */
+}
