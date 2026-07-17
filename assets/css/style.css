@@ -14,69 +14,56 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.5); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(156, 163, 175, 0.8); }
 
+/* Container utama untuk setiap kata */
 .lugot-container {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     position: relative;
-    margin: 0.2rem 0.65rem 1.8rem 0.65rem;
-    min-width: 65px;
-    text-align: center;
+    /* Mengurangi margin agar baris tidak terlalu jauh */
+    margin: 0.2rem 0.4rem 1.5rem 0.4rem; 
+    min-width: 50px;
     vertical-align: top;
 }
 
+/* Teks Matan Arab */
 .lugot-word {
     font-size: 1.85rem;
     font-weight: 500;
     user-select: none;
-    transition: color 0.2s;
     cursor: pointer;
-    padding: 2px 6px;
-    border-radius: 6px;
+    padding: 2px 4px;
     z-index: 10;
 }
 
-.lugot-word:hover {
-    background-color: rgba(185, 28, 28, 0.08);
-    color: #b91c1c;
-}
-
+/* Makna Gandul (Lugot) */
 .lugot-gloss {
     font-family: 'Amiri', 'Cairo', sans-serif;
     color: #9c2a2a;
     display: flex;
-    gap: 4px 4px;
+    flex-wrap: wrap; /* Membolehkan pelipatan teks */
+    justify-content: center; /* Menjaga teks tetap di tengah bawah kata */
     pointer-events: none;
     position: absolute;
-    top: 85%;
+    top: 90%; /* Posisi lebih menempel ke matan */
     font-weight: 600;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    line-height: 1.05;
+    line-height: 1;
     z-index: 5;
+    white-space: nowrap; /* Mencegah kata pegon terpotong */
 }
 
+/* Khusus untuk Arab Pegon */
 .lugot-gloss.is-pegon {
-    transform: rotate(-15deg);
-    transform-origin: top right;
+    transform: rotate(-10deg); /* Miring sedikit saja agar lebih rapi */
+    transform-origin: top center;
     direction: rtl;
-    flex-wrap: wrap-reverse;
-    justify-content: flex-start;
-    align-content: flex-start;
-    right: 15%;
 }
 
+/* Khusus untuk Latin */
 .lugot-gloss.is-latin {
-    transform: rotate(-15deg);
-    transform-origin: top left;
+    transform: rotate(-10deg);
+    transform-origin: top center;
     direction: ltr;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    left: 15%;
-}
-
-.lugot-gloss span {
-    white-space: nowrap;
 }
 
 /* Themes */
