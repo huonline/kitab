@@ -60,32 +60,38 @@ body {
 }
 
 /* Layout Latin yang Rapi & Rapat */
+/* Layout Latin: Matan Besar & Latin Kecil */
+.lugot-container {
+    display: inline-block !important; /* Biar tetap berbaris rapi */
+    vertical-align: top;
+    margin: 0 8px 12px 8px !important; /* Spasi antar kata (horizontal & vertikal) */
+    text-align: center;
+}
+
+/* Memperbesar ukuran Matan Arab */
+.arabic-word { /* Pastikan di JS kamu memakai class ini untuk teks Arab */
+    font-size: 1.8rem !important; 
+    line-height: 1.2 !important;
+    display: block !important;
+}
+
+/* Memperkecil ukuran Lugot Latin */
 .lugot-gloss.is-latin {
     transform: none !important;
-    position: static !important;    /* Biar tidak melayang/tabrakan */
-    display: block !important;       /* Biar lugot ada di bawah kata arab */
-    color: #991b1b !important;       /* Warna teks lugot */
-    font-size: 0.75rem !important;   /* Ukuran kecil agar tidak memenuhi layar */
-    line-height: 1 !important;
-    margin-top: 2px !important;      /* Jarak tipis ke arab */
-    white-space: nowrap;             /* Mencegah teks lugot patah di tengah */
+    position: static !important;
+    display: block !important;       /* Paksa lugot di bawah arab */
+    color: #991b1b !important;
+    font-size: 0.7rem !important;    /* Ukuran lebih kecil dari Arab */
+    line-height: 1.1 !important;
+    margin-top: 4px !important;
+    max-width: 80px;                 /* Batasi lebar agar tidak meluas ke mana-mana */
+    word-wrap: break-word;           /* Jika lugot panjang, dia akan turun ke bawah */
 }
 
-/* Biar matan tidak renggang antar baris */
-.lugot-container {
-    display: inline-flex !important;
-    flex-direction: column;          /* Menyusun arab di atas, latin di bawah */
-    align-items: center;             /* Biar rata tengah */
-    margin: 0 4px 8px 4px !important; /* Jarak antar kata (horizontal) & antar baris (vertikal) */
-    vertical-align: top;
-}
-
-/* Memastikan container kitab rapi */
+/* Mengatur spasi antar baris matan agar rapat */
 #kitabContentContainer {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: start !important; /* Rata kanan/kiri sesuai kebutuhan */
-    line-height: 2.5 !important;      /* Mengatur jarak antar baris matan agar tidak terlalu renggang */
+    line-height: 1.5 !important; 
+    padding: 20px;
 }
 /* Themes */
 .theme-yellow { background-color: #FAF5EB; color: #2D241E; }
