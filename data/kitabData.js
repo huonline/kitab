@@ -599,8 +599,7 @@ const kitabData = [
         irob: "Mudhaf Ilaih",
         wordType: "Isim Jama'",
         explanation: "Mudhaf ilaih majrur dengan ya."
-    }
-]
+    
             }
         ]
     }
