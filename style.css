@@ -186,7 +186,7 @@ body{
 }
 .page-frame::before{ top:10px; left:10px; border-right:none; border-bottom:none; }
 .page-frame::after{ top:10px; right:10px; border-left:none; border-bottom:none; }
-.frame-br{ position:absolute; inset:0; }
+.frame-br{ position:absolute; inset:0; pointer-events:none; }
 .frame-br::before{ bottom:10px; left:10px; top:auto; border-right:none; border-top:none; }
 .frame-br::after{ bottom:10px; right:10px; top:auto; border-left:none; border-top:none; }
 
