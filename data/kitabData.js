@@ -384,5 +384,5 @@
         wordType: "Harf + Dhamir",
         explanation: "Jar majrur."
     }
-]
+];
                 
