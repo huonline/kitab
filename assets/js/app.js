@@ -228,20 +228,38 @@ chapterSearchInput.addEventListener("input", (e) => {
 
 // --- Modals Logic (REVISI) ---
 
-// Modal Word Detail (I'rob)
+// Modal Word Detail (I'rob) - VERSI ANTI-CRASH
 window.openWordModal = function(item) {
     try {
-        document.getElementById("modalArabicWord").textContent = item.withHarokat;
-        document.getElementById("modalPegon").textContent = item.pegon;
-        document.getElementById("modalLatin").textContent = item.latin;
-        document.getElementById("modalIrob").textContent = item.irob;
-        document.getElementById("modalWordType").textContent = item.wordType;
-        document.getElementById("modalExplanation").textContent = item.explanation;
+        // Ambil semua elemen HTML berdasarkan ID-nya
+        const elArabic = document.getElementById("modalArabicWord");
+        const elPegon = document.getElementById("modalPegon");
+        const elLatin = document.getElementById("modalLatin");
+        const elIrob = document.getElementById("modalIrob");
+        const elWordType = document.getElementById("modalWordType");
+        const elExplanation = document.getElementById("modalExplanation");
+
+        // Isi teks hanya JIKA elemennya ditemukan di index.html (mencegah error null)
+        if (elArabic) elArabic.textContent = item.withHarokat || "";
+        if (elPegon) elPegon.textContent = item.pegon || "";
+        if (elLatin) elLatin.textContent = item.latin || "";
+        if (elIrob) elIrob.textContent = item.irob || "";
+        if (elWordType) elWordType.textContent = item.wordType || "";
+        if (elExplanation) elExplanation.textContent = item.explanation || "";
         
+        // Tampilkan modal
         const modalEl = document.getElementById("wordModal");
-        modalEl.classList.remove("hidden");
-        modalEl.classList.add("flex"); // Memastikan display: flex aktif
-        modalEl.firstElementChild.classList.add("scale-100");
+        if (modalEl) {
+            modalEl.classList.remove("hidden");
+            modalEl.classList.add("flex"); // Memastikan display flex aktif
+            
+            // Berikan efek animasi jika elemen pembungkusnya ada
+            if (modalEl.firstElementChild) {
+                modalEl.firstElementChild.classList.add("scale-100");
+            }
+        } else {
+            console.error("Waduh, div id='wordModal' tidak ditemukan di index.html!");
+        }
     } catch (error) {
         console.error("Gagal membuka modal I'rob:", error);
     }
