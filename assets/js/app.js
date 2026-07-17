@@ -1,13 +1,13 @@
 // assets/js/app.js
 
-// App State
+// --- App State ---
 let currentChapterIndex = 0;
 let isHarokatVisible = true;
 let isLugotVisible = true;
 let lugotStyle = "pegon"; // "pegon" or "latin"
 let baseFontSize = 26; // base pixels for Arabic words
 
-// DOM Elements
+// --- DOM Elements ---
 const toggleSidebarBtn = document.getElementById("toggleSidebar");
 const sidebar = document.getElementById("sidebar");
 const chapterSearchInput = document.getElementById("chapterSearch");
@@ -28,16 +28,10 @@ const guideModal = document.getElementById("guideModal");
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsPanel = document.getElementById("settingsPanel");
 
-// Word Modal Elements
+// Modal elements are fetched dynamically in the open function to prevent reference errors
 const wordModal = document.getElementById("wordModal");
-const modalArabicWord = document.getElementById("modalArabicWord");
-const modalPegon = document.getElementById("modalPegon");
-const modalLatin = document.getElementById("modalLatin");
-const modalIrob = document.getElementById("modalIrob");
-const modalWordType = document.getElementById("modalWordType");
-const modalExplanation = document.getElementById("modalExplanation");
 
-// Theme setting handler
+// --- Theme Management ---
 window.setTheme = function(themeName) {
     document.body.className = "h-full flex flex-col overflow-hidden " + themeName;
     localStorage.setItem("kitab-theme", themeName);
@@ -48,7 +42,7 @@ window.setTheme = function(themeName) {
 const savedTheme = localStorage.getItem("kitab-theme") || "theme-yellow";
 setTheme(savedTheme);
 
-// Sidebar & Menus Event Listeners
+// --- Event Listeners: Navigation & Menus ---
 toggleSidebarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("-translate-x-full");
 });
@@ -74,6 +68,7 @@ settingsBtn.addEventListener("click", () => {
     settingsBtn.classList.toggle("bg-black/10");
 });
 
+// --- Event Listeners: Settings ---
 toggleHarokatCheck.addEventListener("change", (e) => {
     isHarokatVisible = e.target.checked;
     renderKitabContent();
@@ -88,10 +83,10 @@ window.setLugotStyle = function(style) {
     lugotStyle = style;
     if (style === "pegon") {
         btnPegon.className = "flex-1 py-1 px-3 text-xs rounded-md bg-white dark:bg-gray-800 font-semibold shadow-sm text-red-700 dark:text-red-400 focus:outline-none transition";
-        btnLatin.className = "flex-1 py-1 px-3 text-xs rounded-md font-medium text-gray-500 hover:text-gray-900 focus:outline-none transition";
+        btnLatin.className = "flex-1 py-1 px-3 text-xs rounded-md font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none transition";
     } else {
         btnLatin.className = "flex-1 py-1 px-3 text-xs rounded-md bg-white dark:bg-gray-800 font-semibold shadow-sm text-red-700 dark:text-red-400 focus:outline-none transition";
-        btnPegon.className = "flex-1 py-1 px-3 text-xs rounded-md font-medium text-gray-500 hover:text-gray-900 focus:outline-none transition";
+        btnPegon.className = "flex-1 py-1 px-3 text-xs rounded-md font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none transition";
     }
     renderKitabContent();
 }
@@ -106,10 +101,16 @@ window.resetFontSize = function() {
     renderKitabContent();
 }
 
-// Render Directory Sidebar Chapters
+// --- Core Rendering Functions ---
 function renderChapterList(searchTerm = "") {
     chapterListEl.innerHTML = "";
-    // Note: kitabData is accessible here because it was loaded first in index.html
+    
+    // Memastikan kitabData tersedia sebelum diolah
+    if (typeof kitabData === 'undefined') {
+        console.error("Data kitabData tidak ditemukan! Pastikan script data diload sebelum app.js.");
+        return;
+    }
+
     const filtered = kitabData.filter(chap => 
         chap.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
         chap.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -154,12 +155,14 @@ function renderChapterList(searchTerm = "") {
 }
 
 function selectChapter(idx) {
+    if (typeof kitabData === 'undefined' || !kitabData[idx]) return;
     const chap = kitabData[idx];
     currentChapterBadge.textContent = chap.title;
     renderKitabContent();
 }
 
 function renderKitabContent() {
+    if (typeof kitabData === 'undefined') return;
     const chap = kitabData[currentChapterIndex];
     kitabContainer.innerHTML = "";
 
@@ -181,8 +184,10 @@ function renderKitabContent() {
         wordSpan.style.fontSize = `${baseFontSize}px`;
         wordSpan.textContent = isHarokatVisible ? item.withHarokat : item.withoutHarokat;
 
-        wordSpan.addEventListener("click", () => {
-            openWordModal(item);
+        // --- REVISI KLIK MODAL DI SINI ---
+        wordSpan.addEventListener("click", (e) => {
+            e.stopPropagation(); // Mencegah bentrok layer
+            window.openWordModal(item);
         });
 
         container.appendChild(wordSpan);
@@ -221,40 +226,57 @@ chapterSearchInput.addEventListener("input", (e) => {
     renderChapterList(e.target.value);
 });
 
-// Modals
-function openWordModal(item) {
-    modalArabicWord.textContent = item.withHarokat;
-    modalPegon.textContent = item.pegon;
-    modalLatin.textContent = item.latin;
-    modalIrob.textContent = item.irob;
-    modalWordType.textContent = item.wordType;
-    modalExplanation.textContent = item.explanation;
-    
-    wordModal.classList.remove("hidden");
-    wordModal.firstElementChild.classList.add("scale-100");
+// --- Modals Logic (REVISI) ---
+
+// Modal Word Detail (I'rob)
+window.openWordModal = function(item) {
+    try {
+        document.getElementById("modalArabicWord").textContent = item.withHarokat;
+        document.getElementById("modalPegon").textContent = item.pegon;
+        document.getElementById("modalLatin").textContent = item.latin;
+        document.getElementById("modalIrob").textContent = item.irob;
+        document.getElementById("modalWordType").textContent = item.wordType;
+        document.getElementById("modalExplanation").textContent = item.explanation;
+        
+        const modalEl = document.getElementById("wordModal");
+        modalEl.classList.remove("hidden");
+        modalEl.classList.add("flex"); // Memastikan display: flex aktif
+        modalEl.firstElementChild.classList.add("scale-100");
+    } catch (error) {
+        console.error("Gagal membuka modal I'rob:", error);
+    }
 }
 
 window.closeWordModal = function() {
-    wordModal.classList.add("hidden");
+    const modalEl = document.getElementById("wordModal");
+    modalEl.classList.add("hidden");
+    modalEl.classList.remove("flex");
 }
 
-wordModal.addEventListener("click", (e) => {
-    if (e.target === wordModal) closeWordModal();
+document.getElementById("wordModal").addEventListener("click", (e) => {
+    if (e.target === document.getElementById("wordModal")) {
+        closeWordModal();
+    }
 });
 
+// Modal Guide
 guideBtn.addEventListener("click", () => {
     guideModal.classList.remove("hidden");
+    guideModal.classList.add("flex");
 });
 
 window.closeGuideModal = function() {
     guideModal.classList.add("hidden");
+    guideModal.classList.remove("flex");
 }
 
 guideModal.addEventListener("click", (e) => {
-    if (e.target === guideModal) closeGuideModal();
+    if (e.target === guideModal) {
+        closeGuideModal();
+    }
 });
 
-// Initialization
+// --- Initialization ---
 window.onload = function() {
     renderChapterList();
     selectChapter(currentChapterIndex);
