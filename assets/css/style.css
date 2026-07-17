@@ -61,11 +61,28 @@ body {
 
 /* Khusus untuk Latin */
 .lugot-gloss.is-latin {
-    transform: none; /* Menghilangkan kemiringan agar teks lurus */
+    transform: none !important; /* Menghilangkan kemiringan */
     direction: ltr;
-    font-family: 'Inter', sans-serif; /* Menggunakan font sistem modern agar lebih mudah dieja */
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    margin-top: 6px; /* Memberikan sedikit jarak napas dari teks Arab di atasnya */
+    margin-top: 10px !important; /* Jarak aman dari matan Arab */
+    
+    /* KUNCI: Ubah posisi agar tidak melayang dan menabrak kata lain */
+    position: relative !important; 
+    top: auto !important;
+    
+    /* Memaksa teks turun ke baris baru ke bawah */
+    display: block !important; 
+    white-space: normal !important; 
+    text-align: center;
+    line-height: 1.3 !important;
+}
+
+/* Mengembalikan spasi antar kata yang hilang di mode Latin */
+.lugot-gloss.is-latin span {
+    white-space: normal !important;
+    margin-right: 4px; /* Menambahkan spasi */
+    display: inline-block; /* Mencegah kata terpotong di tengah huruf */
 }
 
 /* Themes */
