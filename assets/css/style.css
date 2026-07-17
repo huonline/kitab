@@ -59,39 +59,38 @@ body {
     direction: rtl;
 }
 
-/* Layout Latin yang Rapi & Rapat */
-/* Layout Latin: Matan Besar & Latin Kecil */
+/* Reset total untuk lugot agar tidak tumpang tindih */
 .lugot-container {
-    display: inline-block !important; /* Biar tetap berbaris rapi */
-    vertical-align: top;
-    margin: 0 8px 12px 8px !important; /* Spasi antar kata (horizontal & vertikal) */
+    display: inline-block !important;
+    position: relative !important;
+    margin-right: 15px !important; /* Spasi antar kata */
+    margin-bottom: 20px !important; /* Spasi antar baris */
     text-align: center;
 }
 
-/* Memperbesar ukuran Matan Arab */
-.arabic-word { /* Pastikan di JS kamu memakai class ini untuk teks Arab */
-    font-size: 1.8rem !important; 
-    line-height: 1.2 !important;
+/* Matan Arab */
+.lugot-word {
     display: block !important;
+    font-size: 24px !important; /* Matan lebih besar */
 }
 
-/* Memperkecil ukuran Lugot Latin */
-.lugot-gloss.is-latin {
-    transform: none !important;
-    position: static !important;
-    display: block !important;       /* Paksa lugot di bawah arab */
+/* Lugot (Pegon/Latin) */
+.lugot-gloss {
+    position: absolute !important;
+    top: 100% !important; /* Selalu tepat di bawah kata */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    
+    font-size: 10px !important; /* Ukuran lugot kecil */
+    white-space: nowrap !important;
     color: #991b1b !important;
-    font-size: 0.7rem !important;    /* Ukuran lebih kecil dari Arab */
-    line-height: 1.1 !important;
-    margin-top: 4px !important;
-    max-width: 80px;                 /* Batasi lebar agar tidak meluas ke mana-mana */
-    word-wrap: break-word;           /* Jika lugot panjang, dia akan turun ke bawah */
+    margin-top: 2px !important;
 }
 
-/* Mengatur spasi antar baris matan agar rapat */
-#kitabContentContainer {
-    line-height: 1.5 !important; 
-    padding: 20px;
+/* Khusus jika mode Latin aktif */
+.is-latin {
+    transform: translateX(-50%) !important; /* Hapus rotasi miring */
+    text-align: center;
 }
 /* Themes */
 .theme-yellow { background-color: #FAF5EB; color: #2D241E; }
