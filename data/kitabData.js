@@ -91,7 +91,7 @@ const kitabData = [
                 withHarokat: "وَالسَّلَامُ",
                 withoutHarokat: "والسلام",
                 pegon: "جع اري كسلامتان",
-                latin: "jeung kasalametan",
+                latin: "jeung ari kasalametan",
                 irob: "Ma'thuf",
                 wordType: "Isim",
                 explanation: "Ma'thuf kepada 'As-Shalatu', mengikuti i'rob rafa'."
@@ -99,7 +99,7 @@ const kitabData = [
             {
                 withHarokat: "عَلَى",
                 withoutHarokat: "على",
-                pegon: "تتف ك",
+                pegon: "تتف كا",
                 latin: "tetep ka",
                 irob: "Huruf Jar",
                 wordType: "Harf",
@@ -109,7 +109,7 @@ const kitabData = [
                 withHarokat: "سَيِّدِنَا",
                 withoutHarokat: "سيدنا",
                 pegon: "كوستى اوزاع سدايا",
-                latin: "gudti urang sadaya",
+                latin: "gusti urang sadaya",
                 irob: "Majrur",
                 wordType: "Isim + Dhamir",
                 explanation: "Majrur karena didahului 'ala', mudhaf kepada 'na' dhamir."
@@ -163,7 +163,7 @@ const kitabData = [
                 withHarokat: "وَصَحْبِهِ",
                 withoutHarokat: "وصحبه",
                 pegon: "جع كاصحبتنا",
-                latin: "jeung sahabatanana",
+                latin: "jeung ka sahabatanana",
                 irob: "Ma'thuf",
                 wordType: "Isim",
                 explanation: "Athof kepada 'Alihi'."
