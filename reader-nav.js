@@ -1,11 +1,10 @@
-// Navigasi: Geser (paging per layar, maju = kiri ke kanan) dan Gulir
+// Geser (paging per layar, maju = kiri ke kanan) dan Gulir (scroll ke bawah)
 let vp, pg, mode = 'gulir', i = 0, n = 1, w = 0, cb = {};
+const RESET = ['height', 'width', 'columnWidth', 'columnGap', 'transform', 'transition'];
 
 export function setup(v, p, m, callbacks) {
   vp = v; pg = p; mode = m; cb = callbacks; i = 0;
-  vp.className = m;
-  vp.ontouchstart = vp.ontouchend = null;
-  vp.onscroll = null;
+  vp.className = m; vp.ontouchstart = vp.ontouchend = vp.onscroll = null;
   if (m === 'geser') {
     let x = 0, y = 0;
     vp.ontouchstart = e => { x = e.changedTouches[0].clientX; y = e.changedTouches[0].clientY };
@@ -19,9 +18,9 @@ export function setup(v, p, m, callbacks) {
 
 export function layout() {
   if (!vp) return;
-  if (mode === 'gulir') { pg.style.cssText = ''; return update() }
+  if (mode === 'gulir') { RESET.forEach(k => pg.style[k] = ''); return update() }
   w = vp.clientWidth;
-  pg.style.cssText = `height:${vp.clientHeight}px;width:${w}px;column-width:${w}px;column-gap:0;transform:none;transition:none`;
+  Object.assign(pg.style, { transition: 'none', transform: 'none', height: vp.clientHeight + 'px', width: w + 'px', columnWidth: w + 'px', columnGap: '0px' });
   const left = Math.min(...[...pg.children].map(c => c.getBoundingClientRect().left));
   n = Math.max(1, Math.ceil((vp.getBoundingClientRect().right - left - 2) / w));
   i = Math.min(i, n - 1);
@@ -36,20 +35,22 @@ function go(k, anim = true) {
 }
 
 export function update() {
-  if (mode === 'geser') return cb.info?.(`${i + 1} / ${n}`);
+  if (!vp) return;
+  if (mode === 'geser') return cb.info?.(`${i + 1}/${n}`);
   const max = vp.scrollHeight - vp.clientHeight;
   cb.info?.(max > 0 ? Math.round(vp.scrollTop / max * 100) + '%' : '100%');
 }
 
 const atBottom = () => vp.scrollTop + vp.clientHeight >= vp.scrollHeight - 4;
 export function next() {
+  if (!vp) return;
   if (mode === 'geser') return i < n - 1 ? go(i + 1) : cb.edge?.(1);
   atBottom() ? cb.edge?.(1) : vp.scrollBy({ top: vp.clientHeight * .9, behavior: 'smooth' });
 }
 export function prev() {
+  if (!vp) return;
   if (mode === 'geser') return i > 0 ? go(i - 1) : cb.edge?.(-1);
   vp.scrollTop <= 0 ? cb.edge?.(-1) : vp.scrollBy({ top: -vp.clientHeight * .9, behavior: 'smooth' });
 }
-export function toEnd() { mode === 'geser' ? go(n - 1, false) : (vp.scrollTop = vp.scrollHeight) }
-export const isGeser = () => mode === 'geser';
+export function toEnd() { if (vp) mode === 'geser' ? go(n - 1, false) : (vp.scrollTop = vp.scrollHeight) }
 export function destroy() { vp = pg = null }

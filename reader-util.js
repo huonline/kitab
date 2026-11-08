@@ -6,13 +6,6 @@ export const store = {
   get(k, d = null) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch { } }
 };
-// Pecah teks pegon panjang jadi beberapa baris pendek (untuk lajur miring ///)
-export function chunk(t, max = 9) {
-  const out = []; let cur = '';
-  for (const w of words(t)) {
-    if (cur && (cur + ' ' + w).length > max) { out.push(cur); cur = w }
-    else cur = cur ? cur + ' ' + w : w;
-  }
-  if (cur) out.push(cur);
-  return out;
-}
+// Warna sampul tetap per kitab (tidak ada di Firestore)
+const COLORS = ['#1f6f5c', '#7a3b2e', '#2f4b7c', '#6b4a8f', '#a0622a', '#2b2f36', '#8a2f4a'];
+export const colorFor = id => COLORS[[...String(id)].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];

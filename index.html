@@ -1,46 +1,30 @@
-<!doctype html>
-<html lang="id">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pustaka Kitab Kuning</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pustaka Saya</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@500;700&family=Noto+Naskh+Arabic:wght@400;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="reader.css">
-</head>
-<body class="rd">
-<header id="bar">
-  <a id="back" href="#/" hidden aria-label="Kembali ke beranda">‹</a>
-  <h1 id="ttl">Pustaka Kitab Kuning</h1>
-  <select id="babSel" hidden aria-label="Pilih bab"></select>
-  <button id="cfg" aria-label="Pengaturan tampilan">Aa</button>
-</header>
-<main id="app"></main>
-<nav id="foot" hidden>
-  <button id="pv">› Sebelumnya</button>
-  <span id="pos"></span>
-  <button id="nx">Berikutnya ‹</button>
-</nav>
-<dialog id="sheet">
-  <h2>Tampilan</h2>
-  <fieldset><legend>Makna</legend>
-    <button data-k="mode" data-v="pegon">Pegon</button>
-    <button data-k="mode" data-v="indo">Indonesia</button>
-    <button data-k="mode" data-v="matan">Matan saja</button></fieldset>
-  <fieldset><legend>Navigasi</legend>
-    <button data-k="nav" data-v="">Otomatis</button>
-    <button data-k="nav" data-v="geser">Geser</button>
-    <button data-k="nav" data-v="gulir">Gulir</button></fieldset>
-  <fieldset><legend>Tema</legend>
-    <button data-k="theme" data-v="auto">Otomatis</button>
-    <button data-k="theme" data-v="light">Terang</button>
-    <button data-k="theme" data-v="dark">Gelap</button></fieldset>
-  <label>Ukuran huruf <input id="size" type="range" min="18" max="48" step="2"></label>
-  <button id="close" class="p">Selesai</button>
-</dialog>
+</head><body>
+<div class="wrap">
+<header><h1>📚 Pustaka Saya<small id="sub"></small></h1>
+<div class="search"><input id="q" type="search" placeholder="Cari judul, pengarang, atau judul Arab…"></div></header>
+<div class="chips" id="chips"></div>
+<div class="stats" id="stats"></div>
+<div class="grid" id="grid"><div class="empty" style="grid-column:1/-1">Memuat daftar kitab…</div></div>
+</div>
+<div class="ov" id="ovd"><div class="modal" id="det"></div></div>
+<div id="rd" data-rt="light">
+<div class="rt"><button class="ib" id="rx" aria-label="Tutup">←</button><b id="rtl"></b><button class="ib" id="rm">A−</button><button class="ib" id="rp">A+</button><button class="ib" id="rg" aria-label="Pengaturan">⚙</button></div>
+<div id="rs">
+<span><button class="t" data-th="light">Terang</button> <button class="t" data-th="sepia">Sepia</button> <button class="t" data-th="dark">Gelap</button></span>
+<select id="rf"><option value="Amiri,'Noto Naskh Arabic',serif">Amiri (Arab)</option><option value="'Noto Naskh Arabic',serif">Naskh</option><option value="Lora,Georgia,serif">Serif</option><option value="Nunito,system-ui,sans-serif">Sans</option></select>
+<span><button class="t" data-dir="auto">Auto</button> <button class="t" data-dir="rtl">RTL</button> <button class="t" data-dir="ltr">LTR</button></span>
+<label style="margin:0;color:inherit">Jarak baris <input type="range" id="rlh" min="14" max="30" value="20"></label>
+<span><button class="t" data-md="pegon">Pegon</button> <button class="t" data-md="indo">Indonesia</button> <button class="t" data-md="matan">Matan saja</button></span><span><button class="t" data-nv="">Navigasi: Auto</button> <button class="t" data-nv="geser">Geser</button> <button class="t" data-nv="gulir">Gulir</button></span><label style="margin:0;color:inherit">Ukuran matan <input type="range" id="gfa" min="20" max="64" value="34"></label><label style="margin:0;color:inherit">Ukuran pegon <input type="range" id="gpm" min="9" max="30" value="15"></label><label style="margin:0;color:inherit">Kemiringan maks <input type="range" id="ggr" min="0" max="45" value="28"></label><label style="margin:0;color:inherit">Jarak kata <input type="range" id="ggj" min="30" max="130" value="90"></label><label style="margin:0;color:inherit">Tinggi lajur makna <input type="range" id="ggh" min="20" max="140" value="56"></label>
+</div>
+<div id="rb"><div id="rt"></div></div>
+<div class="rbt"><button class="ib" id="pv" aria-label="Sebelumnya">‹</button><input type="range" id="rr" min="1" max="1" value="1" aria-label="Pilih bab"><span class="pg" id="pg"></span><button class="ib" id="nx" aria-label="Berikutnya">›</button></div>
+</div>
 <script src="js/config.js"></script>
 <script type="module" src="reader-main.js"></script>
-</body>
-</html>
+</body></html>
