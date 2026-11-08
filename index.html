@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pustaka Kitab Kuning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="rd">
+<header id="bar">
+  <a id="back" href="#/" hidden aria-label="Kembali ke beranda">‹</a>
+  <h1 id="ttl">Pustaka Kitab Kuning</h1>
+  <select id="babSel" hidden aria-label="Pilih bab"></select>
+  <button id="cfg" aria-label="Pengaturan tampilan">Aa</button>
+</header>
+<main id="app"></main>
+<nav id="foot" hidden>
+  <button id="pv">› Sebelumnya</button>
+  <span id="pos"></span>
+  <button id="nx">Berikutnya ‹</button>
+</nav>
+<dialog id="sheet">
+  <h2>Tampilan</h2>
+  <fieldset><legend>Makna</legend>
+    <button data-k="mode" data-v="pegon">Pegon</button>
+    <button data-k="mode" data-v="indo">Indonesia</button>
+    <button data-k="mode" data-v="matan">Matan saja</button></fieldset>
+  <fieldset><legend>Navigasi</legend>
+    <button data-k="nav" data-v="">Otomatis</button>
+    <button data-k="nav" data-v="geser">Geser</button>
+    <button data-k="nav" data-v="gulir">Gulir</button></fieldset>
+  <fieldset><legend>Tema</legend>
+    <button data-k="theme" data-v="auto">Otomatis</button>
+    <button data-k="theme" data-v="light">Terang</button>
+    <button data-k="theme" data-v="dark">Gelap</button></fieldset>
+  <label>Ukuran huruf <input id="size" type="range" min="18" max="48" step="2"></label>
+  <button id="close" class="p">Selesai</button>
+</dialog>
+<script src="js/config.js"></script>
+<script type="module" src="reader-main.js"></script>
+</body>
+</html>
