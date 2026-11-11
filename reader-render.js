@@ -8,5 +8,10 @@ function row(r, mode, dir) {
     return `<div class="two"><p dir="rtl">${esc(r.a)}</p><p class="tr" dir="auto">${esc(r.t || '')}</p></div>`;
   return `<p dir="${dir}">${esc(r.a)}</p>`;
 }
-export const renderBab = (d, mode, dir) =>
-  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') + (d.rows || []).map(r => row(r, mode, dir)).join('');
+// mine = data pribadi pengguna: p[baris] menggantikan makna umum, c[baris] = catatan
+function rw(r, i, mode, dir, mine) {
+  const p = mine.p?.[i], note = mine.c?.[i];
+  return `<div class="rw${p !== undefined ? ' ed' : ''}" data-r="${i}">${row({ ...r, m: p ?? r.m }, mode, dir)}${note ? '<span class="nt" title="Catatan">📝</span>' : ''}</div>`;
+}
+export const renderBab = (d, mode, dir, mine = {}) =>
+  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') + (d.rows || []).map((r, i) => rw(r, i, mode, dir, mine)).join('');

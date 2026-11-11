@@ -53,4 +53,6 @@ export function prev() {
   vp.scrollTop <= 0 ? cb.edge?.(-1) : vp.scrollBy({ top: -vp.clientHeight * .9, behavior: 'smooth' });
 }
 export function toEnd() { if (vp) mode === 'geser' ? go(n - 1, false) : (vp.scrollTop = vp.scrollHeight) }
+export const pos = () => !vp ? 0 : mode === 'geser' ? i : vp.scrollTop;
+export function restore(k) { if (vp) mode === 'geser' ? go(k, false) : (vp.scrollTop = k) }
 export function destroy() { vp = pg = null }

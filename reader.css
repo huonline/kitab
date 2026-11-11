@@ -86,3 +86,16 @@ textarea.in{min-height:110px;resize:vertical}
 #rb.geser #rt>*{padding:0 20px;break-inside:avoid}
 #rs button.t.on{background:var(--rc);color:var(--rb)}
 @media(prefers-reduced-motion:reduce){#rt{transition:none!important}}
+
+/* ---- edit pribadi ---- */
+.rw{position:relative}
+.rw.ed{box-shadow:inset -3px 0 var(--rm)}
+.nt{position:absolute;left:0;top:0;font-size:15px;cursor:pointer}
+#rt[data-mode=matan] .nt{display:none}
+#rt.editing .rw{cursor:pointer;outline:1px dashed var(--rl);outline-offset:3px;border-radius:4px}
+#ep{display:none;padding:8px 16px;border-bottom:1px solid var(--rl)}
+#ep.on{display:block}
+#ep textarea{min-height:56px}
+#re.on{background:var(--rc);color:var(--rb)}
+#ovr{z-index:40}
+.ts{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;font-size:14px;max-width:90vw}
