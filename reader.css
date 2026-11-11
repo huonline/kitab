@@ -1,3 +1,4 @@
+
 :root{--bg:#f5efe3;--sf:#fffdf8;--ink:#2a2823;--mu:#7b7566;--ac:#1f6f5c;--ac2:#b9852b;--ln:#e5dcc8;--sh:0 6px 20px rgba(60,45,20,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181a;--sf:#1e2326;--ink:#ece8dc;--mu:#9a9585;--ac:#4fb89d;--ac2:#d9a94e;--ln:#2e3539;--sh:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#15181a;--sf:#1e2326;--ink:#ece8dc;--mu:#9a9585;--ac:#4fb89d;--ac2:#d9a94e;--ln:#2e3539;--sh:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}
@@ -98,3 +99,4 @@ textarea.in{min-height:110px;resize:vertical}
 #re.on{background:var(--rc);color:var(--rb)}
 #ovr{z-index:40}
 .ts{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;font-size:14px;max-width:90vw}
+#ep .hint{margin:0 0 8px;font-size:13px;opacity:.75}
