@@ -11,7 +11,7 @@ function row(r, mode, dir) {
 // mine = data pribadi pengguna: p[baris] menggantikan makna umum, c[baris] = catatan
 function rw(r, i, mode, dir, mine) {
   const p = mine.p?.[i], note = mine.c?.[i];
-  return `<div class="rw${p !== undefined ? ' ed' : ''}" data-r="${i}">${row({ ...r, m: p ?? r.m }, mode, dir)}${note ? '<span class="nt" title="Catatan">📝</span>' : ''}</div>`;
+  return `<div class="rw${p !== undefined ? ' ed' : ''}" data-r="${i}">${row({ ...r, m: p ?? r.m }, mode, dir)}${note ? `<div class="cn" dir="auto">${esc(note)}</div>` : ''}</div>`;
 }
 export const renderBab = (d, mode, dir, mine = {}) =>
-  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') + (d.rows || []).map((r, i) => rw(r, i, mode, dir, mine)).join('');
+  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') + (d.rows || []).map((r, i) => rw(r, i, mode, dir, mine)).join('') + (mine.n ? `<div class="cn bn" dir="auto">${esc(mine.n)}</div>` : '');

@@ -89,6 +89,7 @@ $$('[data-nv]').forEach(b => b.onclick = () => { set({ nav: b.dataset.nv }); dra
 $('#rf').onchange = e => { set({ ff: e.target.value }); refit() };
 $('#rlh').oninput = e => { set({ lh: +e.target.value }); refit() };
 [['gfa', 'fa'], ['gpm', 'pm'], ['ggr', 'gr'], ['ggj', 'gj'], ['ggh', 'gh']].forEach(([i, k]) => $('#' + i).oninput = e => { set({ [k]: +e.target.value }); refit() });
+$('#gn').onclick = () => { set({ nt: prefs.nt === false }); refit() };
 $('#pv').onclick = () => nav.prev();
 $('#nx').onclick = () => nav.next();
 $('#rr').oninput = e => show(+e.target.value);
@@ -132,7 +133,7 @@ function openRow(i) {
 }
 $('#rt').addEventListener('click', e => {
   const rw = e.target.closest('.rw');
-  if (rw && user && (editing || e.target.closest('.nt'))) openRow(+rw.dataset.r);
+  if (rw && user && (editing || e.target.closest('.cn'))) openRow(+rw.dataset.r);
 });
 $('#re').onclick = async () => {
   if (!user) { try { await login() } catch (e) { return err('Gagal masuk: ', e) } mine = await getMine(book.id, bid()); $('#bn').value = mine.n || ''; draw(false, true) }

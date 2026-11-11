@@ -90,8 +90,9 @@ textarea.in{min-height:110px;resize:vertical}
 /* ---- edit pribadi ---- */
 .rw{position:relative}
 .rw.ed{box-shadow:inset -3px 0 var(--rm)}
-.nt{position:absolute;left:0;top:0;font-size:15px;cursor:pointer}
-#rt[data-mode=matan] .nt{display:none}
+.cn{margin:.4rem 0 0;padding:.4rem .75rem;border-radius:8px;background:rgba(127,127,127,.12);border-right:3px solid var(--rm);font:15px/1.5 Nunito,system-ui,sans-serif;color:var(--rm);white-space:pre-wrap;text-align:start;direction:auto}
+.cn.bn{margin:1rem 0 0}
+#rt.nonote .cn{display:none}
 #rt.editing .rw{cursor:pointer;outline:1px dashed var(--rl);outline-offset:3px;border-radius:4px}
 #ep{display:none;padding:8px 16px;border-bottom:1px solid var(--rl)}
 #ep.on{display:block}
