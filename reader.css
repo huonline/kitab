@@ -1,4 +1,3 @@
-
 :root{--bg:#f5efe3;--sf:#fffdf8;--ink:#2a2823;--mu:#7b7566;--ac:#1f6f5c;--ac2:#b9852b;--ln:#e5dcc8;--sh:0 6px 20px rgba(60,45,20,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181a;--sf:#1e2326;--ink:#ece8dc;--mu:#9a9585;--ac:#4fb89d;--ac2:#d9a94e;--ln:#2e3539;--sh:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#15181a;--sf:#1e2326;--ink:#ece8dc;--mu:#9a9585;--ac:#4fb89d;--ac2:#d9a94e;--ln:#2e3539;--sh:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}
@@ -89,7 +88,6 @@ textarea.in{min-height:110px;resize:vertical}
 
 /* ---- edit pribadi ---- */
 .rw{position:relative}
-.rw.ed{box-shadow:inset -3px 0 var(--rm)}
 .cn{margin:.4rem 0 0;padding:.4rem .75rem;border-radius:8px;background:rgba(127,127,127,.12);border-right:3px solid var(--rm);font:15px/1.5 Nunito,system-ui,sans-serif;color:var(--rm);white-space:pre-wrap;text-align:start;direction:auto}
 .cn.bn{margin:1rem 0 0}
 #rt.nonote .cn{display:none}
