@@ -4,7 +4,7 @@ import { getIndex, getToc, getBab } from './reader-data.js';
 import { renderBab } from './reader-render.js';
 import { fit } from './reader-fit.js';
 import * as nav from './reader-nav.js';
-import { user, onUser, login, logout, getMine, saveMine, resetKitab } from './reader-user.js';
+import { user, onUser, login, logout, getMine, saveMine, resetKitab, wipeKitab, wipeAll } from './reader-user.js';
 
 let idx = [], cat = 'Semua', q = '', book = null, toc = [], N = 1, num = 1, data = null, mine = {}, editing = false;
 
@@ -145,8 +145,22 @@ $('#rrk').onclick = async () => {
   if (!confirm('Kembalikan semua makna di kitab ini ke versi umum? Catatanmu tetap aman.')) return;
   try { await resetKitab(book.id); mine = await getMine(book.id, bid()); draw(false, true); toast('Makna dikembalikan ke versi umum') } catch (e) { err('Gagal reset: ', e) }
 };
+const refresh = async () => { mine = await getMine(book.id, bid()); $('#bn').value = mine.n || ''; draw(false, true) };
+$('#wb').onclick = async () => {
+  if (!confirm('Hapus SEMUA makna dan catatan milikmu di bab ini? Tidak bisa dibatalkan.')) return;
+  if (await commit(() => { mine.p = {}; mine.c = {}; mine.n = '' })) { $('#bn').value = ''; toast('Data bab ini dihapus') }
+};
+$('#wk').onclick = async () => {
+  if (!confirm('Hapus SEMUA makna dan catatan milikmu di kitab ini? Tidak bisa dibatalkan.')) return;
+  try { await wipeKitab(book.id); await refresh(); toast('Data kitab ini dihapus') } catch (e) { err('Gagal menghapus: ', e) }
+};
+$('#wa').onclick = async () => {
+  if (!user || !confirm('Hapus SEMUA makna dan catatan milikmu di SEMUA kitab? Tidak bisa dibatalkan.') || !confirm('Yakin? Semua data pribadimu akan hilang dan kembali ke versi umum.')) return;
+  try { await wipeAll(idx.map(k => k.id)); if (book && data) await refresh(); toast('Semua datamu dihapus') } catch (e) { err('Gagal menghapus: ', e) }
+};
 $('#acc').onclick = () => user ? logout() : login().catch(e => err('Gagal masuk: ', e));
 onUser(async u => {
+  $('#wa').hidden = !u;
   $('#acc').textContent = u ? `${(u.displayName || 'Akun').split(' ')[0]} · Keluar` : 'Masuk Google';
   if (!$('#rd').classList.contains('on') || !data) return;
   if (!u) { setEdit(false); mine = {} } else mine = await getMine(book.id, bid());

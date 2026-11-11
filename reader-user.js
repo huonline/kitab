@@ -35,3 +35,11 @@ export async function resetKitab(kid) {
   for (const x of s.docs) await saveMine(kid, x.id, { ...x.data(), p: {} });
   for (const k of [...cache.keys()]) if (k.startsWith(`${user.uid}/${kid}/`)) cache.delete(k);
 }
+
+// Hapus total (makna + catatan): satu kitab, atau semua kitab di akun ini
+export async function wipeKitab(kid) {
+  const s = await getDocs(collection(db, 'users', user.uid, 'k', kid, 'b'));
+  for (const x of s.docs) await deleteDoc(x.ref);
+  for (const k of [...cache.keys()]) if (k.startsWith(`${user.uid}/${kid}/`)) cache.delete(k);
+}
+export async function wipeAll(kids) { for (const id of kids) await wipeKitab(id) }
