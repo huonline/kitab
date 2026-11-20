@@ -1,32 +1,115 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pustaka Saya</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@500;700&family=Noto+Naskh+Arabic:wght@400;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Pustaka Kitab Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@500;700&family=Noto+Naskh+Arabic:wght@400;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="reader.css">
 </head><body>
+
+<nav class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="brand-ic">📚</span>
+      <div>
+        <strong id="appTitle">Pustaka Kitab Digital</strong>
+        <small id="sub">Memuat pustaka…</small>
+      </div>
+    </div>
+    <div class="nav-act">
+      <button class="pill" data-open-muq title="Muqodimah & Biografi">📖 Muqodimah</button>
+      <button class="pill pill-gold" data-open-don title="Dukung & Donasi">💝 Donasi</button>
+      <button class="btn ghost sm" id="acc">Masuk Google</button>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
-<header><h1>📚 Pustaka Saya<small id="sub"></small></h1><button class="btn ghost" id="acc">Masuk Google</button>
-<div class="search"><input id="q" type="search" placeholder="Cari judul, pengarang, atau judul Arab…"></div></header>
-<div class="chips" id="chips"></div>
-<div class="stats" id="stats"></div>
-<div class="grid" id="grid"><div class="empty" style="grid-column:1/-1">Memuat daftar kitab…</div></div>
+  <section class="hero">
+    <div class="hero-badge">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1 id="heroTitle">Khazanah Kitab Kuning Digital</h1>
+    <p id="heroDesc">Baca matan &amp; terjemah Indonesia yang terjaga, serta tulis dan simpan makna Pegon pribadimu langsung di akun Google-mu.</p>
+    <div class="hero-btns">
+      <button class="btn" data-open-muq>📖 Baca Muqodimah &amp; Biografi</button>
+      <button class="btn ghost" data-open-don>💝 Donasi</button>
+      <button class="btn ghost" data-open-wa>💬 Saran / WhatsApp</button>
+    </div>
+  </section>
+
+  <div id="cont"></div>
+
+  <div class="toolbar">
+    <div class="search"><input id="q" type="search" placeholder="Cari judul kitab, pengarang, fan ilmu, atau judul Arab…"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"><div class="empty" style="grid-column:1/-1">Memuat daftar kitab…</div></div>
+
+  <footer class="ft">
+    <div class="ft-brand">Disusun &amp; diterbitkan oleh <b id="ftPub">Nur Alam</b></div>
+    <div class="ft-links">
+      <button data-open-muq>Muqodimah &amp; Biografi</button>
+      <span>·</span>
+      <button data-open-don>Donasi</button>
+      <span>·</span>
+      <button data-open-wa>Hubungi WhatsApp</button>
+    </div>
+  </footer>
 </div>
+
+<!-- Modal Detail Kitab -->
 <div class="ov" id="ovd"><div class="modal" id="det"></div></div>
+
+<!-- Modal Edit Makna Pegon & Lapor Baris -->
 <div class="ov" id="ovr"><div class="modal" id="rowm"></div></div>
+
+<!-- Modal Muqodimah & Biografi Penerbit -->
+<div class="ov" id="ovm"><div class="modal" id="muq"></div></div>
+
+<!-- Modal Donasi -->
+<div class="ov" id="ovdon"><div class="modal" id="don"></div></div>
+
+<!-- Layar Pembaca Kitab -->
 <div id="rd" data-rt="light">
-<div class="rt"><button class="ib" id="rx" aria-label="Tutup">←</button><b id="rtl"></b><button class="ib" id="re" aria-label="Edit makna" title="Edit makna">✎</button><button class="ib" id="rm">A−</button><button class="ib" id="rp">A+</button><button class="ib" id="rg" aria-label="Pengaturan">⚙</button></div>
-<div id="rs">
-<span><button class="t" data-th="light">Terang</button> <button class="t" data-th="sepia">Sepia</button> <button class="t" data-th="dark">Gelap</button></span>
-<select id="rf"><option value="Amiri,'Noto Naskh Arabic',serif">Amiri (Arab)</option><option value="'Noto Naskh Arabic',serif">Naskh</option><option value="Lora,Georgia,serif">Serif</option><option value="Nunito,system-ui,sans-serif">Sans</option></select>
-<span><button class="t" data-dir="auto">Auto</button> <button class="t" data-dir="rtl">RTL</button> <button class="t" data-dir="ltr">LTR</button></span>
-<label style="margin:0;color:inherit">Jarak baris <input type="range" id="rlh" min="14" max="30" value="20"></label>
-<span><button class="t" data-md="pegon">Pegon</button> <button class="t" data-md="indo">Indonesia</button> <button class="t" data-md="matan">Matan saja</button></span><span><button class="t" id="wa" hidden>Hapus semua data saya</button></span><span><button class="t" id="gn">Catatan: ON</button></span><span><button class="t" data-nv="">Navigasi: Auto</button> <button class="t" data-nv="geser">Geser</button> <button class="t" data-nv="gulir">Gulir</button></span><label style="margin:0;color:inherit">Ukuran matan <input type="range" id="gfa" min="20" max="64" value="34"></label><label style="margin:0;color:inherit">Ukuran pegon <input type="range" id="gpm" min="9" max="30" value="15"></label><label style="margin:0;color:inherit">Kemiringan maks <input type="range" id="ggr" min="0" max="45" value="28"></label><label style="margin:0;color:inherit">Jarak kata <input type="range" id="ggj" min="30" max="130" value="90"></label><label style="margin:0;color:inherit">Tinggi lajur makna <input type="range" id="ggh" min="20" max="140" value="56"></label>
+  <div class="rt">
+    <button class="ib" id="rx" aria-label="Tutup">←</button>
+    <b id="rtl"></b>
+    <button class="ib" id="re" aria-label="Edit makna Pegon" title="Edit makna Pegon">✎</button>
+    <button class="ib" id="rm" title="Perkecil huruf">A−</button>
+    <button class="ib" id="rp" title="Perbesar huruf">A+</button>
+    <button class="ib" id="rg" aria-label="Pengaturan">⚙</button>
+  </div>
+  <div id="rs">
+    <span><button class="t" data-th="light">Terang</button> <button class="t" data-th="sepia">Sepia</button> <button class="t" data-th="dark">Gelap</button></span>
+    <select id="rf"><option value="Amiri,'Noto Naskh Arabic',serif">Amiri (Arab)</option><option value="'Noto Naskh Arabic',serif">Naskh</option><option value="Lora,Georgia,serif">Serif</option><option value="Nunito,system-ui,sans-serif">Sans</option></select>
+    <span><button class="t" data-dir="auto">Auto</button> <button class="t" data-dir="rtl">RTL</button> <button class="t" data-dir="ltr">LTR</button></span>
+    <label style="margin:0;color:inherit">Jarak baris <input type="range" id="rlh" min="14" max="30" value="20"></label>
+    <span><button class="t" data-md="pegon">Pegon</button> <button class="t" data-md="indo">Indonesia</button> <button class="t" data-md="matan">Matan saja</button></span>
+    <span><button class="t" id="gn">Catatan: ON</button></span>
+    <span><button class="t" data-nv="">Navigasi: Auto</button> <button class="t" data-nv="geser">Geser</button> <button class="t" data-nv="gulir">Gulir</button></span>
+    <label style="margin:0;color:inherit">Ukuran matan <input type="range" id="gfa" min="20" max="64" value="34"></label>
+    <label style="margin:0;color:inherit">Ukuran pegon <input type="range" id="gpm" min="9" max="30" value="15"></label>
+    <label style="margin:0;color:inherit">Kemiringan maks <input type="range" id="ggr" min="0" max="45" value="28"></label>
+    <label style="margin:0;color:inherit">Jarak kata <input type="range" id="ggj" min="30" max="130" value="90"></label>
+    <label style="margin:0;color:inherit">Tinggi lajur makna <input type="range" id="ggh" min="20" max="140" value="56"></label>
+    <span><button class="t" data-open-don>💝 Donasi</button> <button class="t" data-open-wa>💬 Kirim Saran (WA)</button></span>
+    <span><button class="t" id="wa" hidden>Hapus semua data saya</button></span>
+  </div>
+  <div id="ep">
+    <p class="hint">Ketuk kalimat di bawah untuk mengisi/mengubah makna Pegon pribadimu (tersimpan khusus di akunmu).</p>
+    <textarea class="in" id="bn" rows="2" placeholder="Catatan bab pribadi (otomatis tersimpan di akunmu)"></textarea>
+    <div class="row" style="margin-top:8px"><button class="btn ghost" id="rrb">Reset makna bab</button><button class="btn ghost" id="rrk">Reset makna kitab</button></div>
+    <div class="row" style="margin-top:8px"><button class="btn ghost" id="wb">Hapus semua data bab</button><button class="btn ghost" id="wk">Hapus semua data kitab</button></div>
+  </div>
+  <div id="rb"><div id="rt"></div></div>
+  <div class="rbt">
+    <button class="ib" id="pv" aria-label="Sebelumnya">‹</button>
+    <input type="range" id="rr" min="1" max="1" value="1" aria-label="Pilih bab">
+    <span class="pg" id="pg"></span>
+    <button class="ib" id="nx" aria-label="Berikutnya">›</button>
+  </div>
 </div>
-<div id="ep"><p class="hint">Ketuk kalimat (baris) di bawah untuk mengubah makna atau menambah catatan baris.</p><textarea class="in" id="bn" rows="2" placeholder="Catatan bab (otomatis tersimpan di akunmu)"></textarea><div class="row" style="margin-top:8px"><button class="btn ghost" id="rrb">Reset makna bab</button><button class="btn ghost" id="rrk">Reset makna kitab</button></div><div class="row" style="margin-top:8px"><button class="btn ghost" id="wb">Hapus semua data bab</button><button class="btn ghost" id="wk">Hapus semua data kitab</button></div></div>
-<div id="rb"><div id="rt"></div></div>
-<div class="rbt"><button class="ib" id="pv" aria-label="Sebelumnya">‹</button><input type="range" id="rr" min="1" max="1" value="1" aria-label="Pilih bab"><span class="pg" id="pg"></span><button class="ib" id="nx" aria-label="Berikutnya">›</button></div>
-</div>
+
 <script src="js/config.js"></script>
 <script type="module" src="reader-main.js"></script>
 </body></html>
