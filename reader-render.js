@@ -1,5 +1,7 @@
 import { esc, words } from './reader-util.js';
-// Struktur sama dengan Pustaka_Saya.html (.gl > .w > .a + .m); fit() menata kemiringannya
+
+export const rowKey = (r, i) => r.id || String(i);
+
 function row(r, mode, dir) {
   const m = r.m || [];
   if (mode === 'pegon' && m.some(x => x))
@@ -8,10 +10,16 @@ function row(r, mode, dir) {
     return `<div class="two"><p dir="rtl">${esc(r.a)}</p><p class="tr" dir="auto">${esc(r.t || '')}</p></div>`;
   return `<p dir="${dir}">${esc(r.a)}</p>`;
 }
-// mine = data pribadi pengguna: p[baris] menggantikan makna umum, c[baris] = catatan
+
 function rw(r, i, mode, dir, mine) {
-  const p = mine.p?.[i], note = mine.c?.[i];
+  const rk = rowKey(r, i);
+  // Prioritas baca berdasarkan ID permanen kalimat (r.id), dengan fallback ke indeks lama
+  const p = mine.p?.[rk] ?? (r.id ? mine.p?.[i] : undefined);
+  const note = mine.c?.[rk] ?? (r.id ? mine.c?.[i] : undefined);
   return `<div class="rw${p !== undefined ? ' ed' : ''}" data-r="${i}">${row({ ...r, m: p ?? r.m }, mode, dir)}${note ? `<div class="cn" dir="auto">${esc(note)}</div>` : ''}</div>`;
 }
+
 export const renderBab = (d, mode, dir, mine = {}) =>
-  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') + (d.rows || []).map((r, i) => rw(r, i, mode, dir, mine)).join('') + (mine.n ? `<div class="cn bn" dir="auto">${esc(mine.n)}</div>` : '');
+  (d.title ? `<h2 class="bt">${esc(d.title)}</h2>` : '') +
+  (d.rows || []).map((r, i) => rw(r, i, mode, dir, mine)).join('') +
+  (mine.n ? `<div class="cn bn" dir="auto">${esc(mine.n)}</div>` : '');
