@@ -10,7 +10,7 @@ window.FIREBASE_CONFIG = {
 
 // Isi dengan UID Google Admin kamu (bisa dilihat di pojok kanan atas admin.html setelah login).
 // Selama masih kosong [], semua akun yang login di admin.html bisa melihat UID-nya untuk disalin.
-window.ADMIN_UIDS = [];
+window.ADMIN_UIDS = ["ZFS50j1MpVcgMBYrvnZnMHfg2H83"];
 
 // Data bawaan situs (bisa diubah kapan saja dari tab Pengaturan di Admin tanpa edit kode)
 window.SITE_DEFAULTS = {
