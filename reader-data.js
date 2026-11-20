@@ -2,21 +2,21 @@ import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase
 import { db } from './reader-firebase.js';
 import { store } from './reader-util.js';
 
-export async function getIndex() {
+export async function getMeta() {
+  const defSite = window.SITE_DEFAULTS || {};
   try {
     const s = await getDoc(doc(db, 'meta', 'index'));
-    const list = s.exists() ? (s.data().list || []) : [];
-    store.set('pkk:index', list);
-    return list;
+    const d = s.exists() ? s.data() : {};
+    const res = { list: d.list || [], site: { ...defSite, ...(d.site || {}) } };
+    store.set('pkk:meta', res);
+    return res;
   } catch (e) {
-    const c = store.get('pkk:index');
-    if (c) return c;
+    const c = store.get('pkk:meta');
+    if (c) return { list: c.list || [], site: { ...defSite, ...(c.site || {}) } };
     throw e;
   }
 }
 
-// Daftar bab [{id, t}] dari pub/{id}.babs. Jika belum ada (kitab diterbitkan sebelum
-// patch admin), tebak b0001..b{nbab}. Hasil di-cache per revisi.
 export async function getToc(k) {
   const key = `pkk:t:${k.id}:${k.rev}`, c = store.get(key);
   if (c) return c;
