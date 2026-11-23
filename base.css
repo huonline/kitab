@@ -1,0 +1,12 @@
+/* Gaya dasar: warna, tombol, kolom isian, kartu, toast. Dipakai admin dan (nanti) pembaca. */
+:root{--bg:#f5efe3;--sf:#fffdf8;--ink:#2a2823;--mu:#7b7566;--ac:#1f6f5c;--ln:#e5dcc8;--wr:#b3402f;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#15181a;--sf:#1e2326;--ink:#ece8dc;--mu:#9a9585;--ac:#4fb89d;--ln:#2e3539;--wr:#e0806f;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:14px 14px 80px}
+button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--ln);background:var(--sf);border-radius:10px;padding:8px 14px;min-height:40px}
+button.p{background:var(--ac);color:#fff;border-color:var(--ac)}button.d{color:var(--wr)}
+.in{width:100%;padding:9px 11px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);font:inherit;color:inherit}
+.c{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:10px 0}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.sp{flex:1}small{color:var(--mu)}
+#ts{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#222;color:#fff;padding:10px 16px;border-radius:12px;display:none;z-index:9;max-width:90vw}
+code{font-size:12px;user-select:all}
