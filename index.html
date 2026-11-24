@@ -4,7 +4,6 @@
 <title>Pustaka Kitab Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@500;700&family=Noto+Naskh+Arabic:wght@400;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/reader.css">
-<link rel="stylesheet" href="css/home.css">
 </head><body>
 
 <nav class="topbar">
@@ -17,8 +16,8 @@
       </div>
     </div>
     <div class="nav-act">
-      <button class="nav-link" data-open-muq>Tentang</button>
-      <button class="nav-link" data-open-don>Dukung</button>
+      <button class="pill" data-open-muq title="Muqodimah & Biografi">📖 Muqodimah</button>
+      <button class="pill pill-gold" data-open-don title="Dukung & Donasi">💝 Donasi</button>
       <button class="btn ghost sm" id="acc">Masuk Google</button>
     </div>
   </div>
@@ -29,12 +28,17 @@
     <div class="hero-badge">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
     <h1 id="heroTitle">Khazanah Kitab Kuning Digital</h1>
     <p id="heroDesc">Baca matan &amp; terjemah Indonesia yang terjaga, serta tulis dan simpan makna Pegon pribadimu langsung di akun Google-mu.</p>
-    <div class="search"><input id="q" type="search" placeholder="Cari judul, pengarang, atau fan ilmu…"></div>
+    <div class="hero-btns">
+      <button class="btn" data-open-muq>📖 Baca Muqodimah &amp; Biografi</button>
+      <button class="btn ghost" data-open-don>💝 Donasi</button>
+      <button class="btn ghost" data-open-wa>💬 Saran / WhatsApp</button>
+    </div>
   </section>
 
   <div id="cont"></div>
 
   <div class="toolbar">
+    <div class="search"><input id="q" type="search" placeholder="Cari judul kitab, pengarang, fan ilmu, atau judul Arab…"></div>
     <div class="chips" id="chips"></div>
   </div>
 
@@ -42,12 +46,14 @@
   <div class="grid" id="grid"><div class="empty" style="grid-column:1/-1">Memuat daftar kitab…</div></div>
 
   <footer class="ft">
-    <div class="ft-links">
-      <button data-open-muq>Tentang &amp; Biografi</button>
-      <button data-open-don>Dukung Pengembangan</button>
-      <button data-open-wa>Kirim Saran</button>
-    </div>
     <div class="ft-brand">Disusun &amp; diterbitkan oleh <b id="ftPub">Nur Alam</b></div>
+    <div class="ft-links">
+      <button data-open-muq>Muqodimah &amp; Biografi</button>
+      <span>·</span>
+      <button data-open-don>Donasi</button>
+      <span>·</span>
+      <button data-open-wa>Hubungi WhatsApp</button>
+    </div>
   </footer>
 </div>
 
