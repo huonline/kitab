@@ -195,17 +195,7 @@ function setEdit(on) {
 
 async function commit(fn, redraw = true) {
   mine.p = mine.p || {}; mine.c = mine.c || {}; fn();
-  try {
-    await saveMine(book.id, bid(), mine);
-  } catch (e) {
-    if (e.localSaved) {
-      toast('Tersimpan di perangkat. Menunggu sinkronisasi ke server.');
-      if (redraw) draw(false, true);
-      return true;
-    }
-    err('Gagal menyimpan: ', e);
-    return false;
-  }
+  try { await saveMine(book.id, bid(), mine) } catch (e) { err('Gagal menyimpan: ', e); return false }
   if (redraw) draw(false, true);
   return true;
 }
