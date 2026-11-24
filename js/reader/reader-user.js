@@ -6,9 +6,9 @@ import { store } from './reader-util.js';
 export let user = null;
 
 const ref = (uid, kid, bid) => doc(db, 'users', uid, 'k', kid, 'b', bid);
-const key = (uid, kid, bid) => \`\${uid}/\${kid}/\${bid}\`;
-const lkey = (uid, kid, bid) => \`pkk:u:\${uid}:\${kid}:\${bid}\`;
-const opkey = (uid, kid, bid) => \`pkk:u:sync:\${uid}:\${encodeURIComponent(kid)}:\${encodeURIComponent(bid)}\`;
+const key = (uid, kid, bid) => `${uid}/${kid}/${bid}`;
+const lkey = (uid, kid, bid) => `pkk:u:${uid}:${kid}:${bid}`;
+const opkey = (uid, kid, bid) => `pkk:u:sync:${uid}:${encodeURIComponent(kid)}:${encodeURIComponent(bid)}`;
 const cache = new Map();
 const syncing = new Map();
 
@@ -115,7 +115,7 @@ async function syncOne(uid, kid, bid) {
 export async function retryPending() {
   const uid = user?.uid;
   if (!uid || !navigator.onLine) return;
-  const prefix = \`pkk:u:sync:\${uid}:\`;
+  const prefix = `pkk:u:sync:${uid}:`;
   const jobs = [];
   for (let i = 0; i < localStorage.length; i++) {
     const item = localStorage.key(i);
@@ -217,8 +217,8 @@ export async function saveMine(kid, bid, d) {
 function clearLocalKitab(kid) {
   if (!user) return;
   const uid = user.uid;
-  for (const k of [...cache.keys()) if (k.startsWith(\`\${uid}/\${kid}/\`)) cache.delete(k);
-  const prefixes = [\`pkk:u:\${uid}:\${kid}:\`, \`pkk:u:sync:\${uid}:\${encodeURIComponent(kid)}:\`];
+  for (const k of [...cache.keys()) if (k.startsWith(`${uid}/${kid}/`)) cache.delete(k);
+  const prefixes = [`pkk:u:${uid}:${kid}:`, `pkk:u:sync:${uid}:${encodeURIComponent(kid)}:`];
   for (let i = localStorage.length - 1; i >= 0; i--) {
     const lk = localStorage.key(i);
     if (lk && prefixes.some(prefix => lk.startsWith(prefix))) localStorage.removeItem(lk);
